@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech.Care Patient Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo">
+        <img src="asserts/TestLogo.svg" alt="Tech.Care" />
+      </div>
+
+      <nav class="navigation">
+        <a href="#">
+          <img src="asserts/home_FILL0_wght300_GRAD0_opsz24.svg" alt="" />
+          Overview
+        </a>
+
+        <a href="#" class="selected">
+          <img src="asserts/group_FILL0_wght300_GRAD0_opsz24.svg" alt="" />
+          Patients
+        </a>
+
+        <a href="#">
+          <img
+            src="asserts/calendar_today_FILL0_wght300_GRAD0_opsz24.svg"
+            alt=""
+          />
+          Schedule
+        </a>
+
+        <a href="#">
+          <img
+            src="asserts/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg"
+            alt=""
+          />
+          Message
+        </a>
+
+        <a href="#">
+          <img
+            src="asserts/credit_card_FILL0_wght300_GRAD0_opsz24.svg"
+            alt=""
+          />
+          Transactions
+        </a>
+      </nav>
+
+      <div class="doctor-profile">
+        <span class="doctor-symbol">👩‍⚕️</span>
+        <div>
+          <strong>Dr. Doctor</strong>
+          <small>General Practitioner</small>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <!-- LEFT: PATIENTS -->
+      <aside class="panel patient-list">
+        <div class="panel-heading">
+          <h2>Patients</h2>
+          <span aria-hidden="true">⌕</span>
+        </div>
+        <div id="patients-list">
+          <p class="loading">Loading patients...</p>
+        </div>
+      </aside>
+
+      <!-- CENTER: DIAGNOSIS HISTORY -->
+      <section class="center-column">
+        <section class="panel diagnosis-section">
+          <h2>Diagnosis History</h2>
+
+          <div class="history-layout">
+            <div class="chart-panel">
+              <div class="chart-heading">
+                <h3>Blood Pressure</h3>
+                <span>Last 6 months</span>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="bloodPressureChart"></canvas>
+              </div>
+            </div>
+
+            <div class="bp-summary">
+              <div class="bp-item">
+                <span class="legend-dot systolic-dot"></span>
+                <span>Systolic</span>
+                <strong id="systolic-value">--</strong>
+                <small>mmHg</small>
+              </div>
+              <div class="bp-item">
+                <span class="legend-dot diastolic-dot"></span>
+                <span>Diastolic</span>
+                <strong id="diastolic-value">--</strong>
+                <small>mmHg</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="vitals-container">
+            <article class="vital-card respiratory-card">
+              <img
+                src="asserts/respiratory%20rate.svg"
+                alt=""
+                class="vital-icon"
+              />
+              <h3>Respiratory Rate</h3>
+              <p class="vital-value" id="respiratory-value">--</p>
+              <p class="vital-unit">breaths/min</p>
+              <p class="vital-status" id="respiratory-status">Latest reading</p>
+            </article>
+
+            <article class="vital-card temperature-card">
+              <img src="asserts/temperature.svg" alt="" class="vital-icon" />
+              <h3>Temperature</h3>
+              <p class="vital-value" id="temperature-value">--</p>
+              <p class="vital-unit">°F</p>
+              <p class="vital-status" id="temperature-status">Latest reading</p>
+            </article>
+
+            <article class="vital-card heart-card">
+              <img src="asserts/HeartBPM.svg" alt="" class="vital-icon" />
+              <h3>Heart Rate</h3>
+              <p class="vital-value" id="heart-value">--</p>
+              <p class="vital-unit">bpm</p>
+              <p class="vital-status" id="heart-status">Latest reading</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel diagnostic-section">
+          <h2>Diagnostic List</h2>
+          <div class="diagnostic-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Problem / Diagnosis</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="diagnostic-list">
+                <tr>
+                  <td colspan="3">Loading diagnoses...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- RIGHT: PATIENT DETAILS -->
+      <aside class="right-column">
+        <section class="panel patient-details">
+          <div class="profile-header">
+            <img
+              src="asserts/Layer%202%402x.png"
+              alt="Jessica Taylor"
+              class="profile-avatar"
+              id="profile-avatar"
+            />
+            <h2 id="profile-name">Jessica Taylor</h2>
+            <p id="profile-description">Female, 28 years old</p>
+          </div>
+
+          <div class="personal-information">
+            <h3>Personal Information</h3>
+
+            <div class="info-row">
+              <img src="asserts/BirthIcon.svg" alt="" />
+              <div>
+                <span>Date Of Birth</span>
+                <strong id="date-of-birth">08/23/1996</strong>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <img src="asserts/FemaleIcon.svg" alt="" />
+              <div>
+                <span>Gender</span>
+                <strong id="profile-gender">Female</strong>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <img src="asserts/PhoneIcon.svg" alt="" />
+              <div>
+                <span>Contact Info.</span>
+                <strong id="phone-number">--</strong>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <img src="asserts/PhoneIcon.svg" alt="" />
+              <div>
+                <span>Emergency Contact</span>
+                <strong id="emergency-contact">--</strong>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <img src="asserts/InsuranceIcon.svg" alt="" />
+              <div>
+                <span>Insurance Provider</span>
+                <strong id="insurance-provider">--</strong>
+              </div>
+            </div>
+          </div>
+
+          <button class="details-button" type="button">
+            Show All Information
+          </button>
+        </section>
+
+        <section class="panel lab-section">
+          <h2>Lab Results</h2>
+          <ul id="lab-results">
+            <li>Loading lab results...</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+  </body>
+</html>
