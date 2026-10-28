@@ -40,6 +40,8 @@ The dashboard retrieves patient information from the Coalition Technologies API.
 - **Method:** GET
 - **Authentication:** Basic Authentication
 - **API URL:** `https://fedskillstest.coalitiontechnologies.workers.dev`
+- Username: coalition
+- Password: skills-test
 
 The dashboard selects Jessica Taylor’s information and uses it to populate her profile, health metrics, diagnostic list, lab results, and blood pressure chart.
 
